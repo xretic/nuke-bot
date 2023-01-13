@@ -2,7 +2,6 @@ import { IntentsBitField } from "discord.js";
 import { Client } from "discordx";
 import { importx } from "@discordx/importer";
 import path from "path";
-import Config from "../config/Config";
 
 export const client = new Client({
 	intents: [
@@ -22,5 +21,5 @@ export const client = new Client({
 
 export const run = async (): Promise<void> => {
 	await importx(path.resolve("./{src,dist}/events/") + "/**/*.{ts,js}");
-	await client.login(Config.DiscordToken);
+	await client.login(process.env.DISCORD_TOKEN);
 };

@@ -1,4 +1,9 @@
 import { run } from "./libs/discord";
+import { config } from "dotenv";
+
+config({
+	path: "./.env",
+});
 
 const startApp = async (): Promise<void> => {
 	await run();

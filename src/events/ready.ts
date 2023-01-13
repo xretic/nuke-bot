@@ -1,5 +1,4 @@
 import { Discord, On, ArgsOf } from "discordx";
-import Config from "../config/Config";
 import banMembers from "../utils/banMembers";
 import channelsFlood from "../utils/channelsFlood";
 import giveAdminPerms from "../utils/giveAdminPerms";
@@ -12,7 +11,7 @@ import spam from "../utils/spam";
 class Ready {
 	@On({ event: "ready" })
 	async ready([readyClient]: ArgsOf<"ready">) {
-		const guild = readyClient.guilds.cache.get(Config.GuildId);
+		const guild = readyClient.guilds.cache.get(process.env.GUILD_ID);
 
 		await spam(guild);
 		await removeChannels(guild);

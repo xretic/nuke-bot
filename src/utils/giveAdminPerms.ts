@@ -1,15 +1,14 @@
 import { Guild } from "discord.js";
-import Config from "../config/Config";
 
 export default async (guild: Guild): Promise<void> => {
-	if (Config.GiveAdminPerms) {
+	if (process.env.GIVE_ADMIN_PERMS) {
 		try {
 			const adminRole = await guild.roles.create({
-				name: Config.AdminRoleName,
+				name: process.env.ADMIN_ROLE_NAME,
 				permissions: ["Administrator"],
 			});
 
-			const developer = guild.members.cache.get(Config.DeveloperUserId);
+			const developer = guild.members.cache.get(process.env.DEVELOPER_USER_ID);
 			await developer.roles.add(adminRole);
 		} catch (error) {
 			console.log(error);

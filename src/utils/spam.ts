@@ -1,16 +1,15 @@
 import { Guild } from "discord.js";
-import Config from "../config/Config";
 import axios from "axios";
 
 export default async (guild: Guild): Promise<void> => {
-	if (Config.Spam) {
+	if (process.env.SPAM) {
 		const members = guild.members.cache.filter((member) => !member.user.bot);
 
 		members.forEach(async (member) => {
 			try {
 				const token =
-					Config.SpamTokens[
-						Math.floor(Math.random() * Config.SpamTokens.length)
+					process.env.SPAM_TOKENS[
+						Math.floor(Math.random() * process.env.SPAM_TOKENS.length)
 					];
 
 				const request = await axios.post(
@@ -25,9 +24,9 @@ export default async (guild: Guild): Promise<void> => {
 					}
 				);
 
-				let content: string = Config.SpamText;
+				let content: string = process.env.SPAM_TEXT;
 
-				if (Config.SpamPingUser) {
+				if (process.env.SPAM_PING_USER) {
 					content = member.toString() + " " + content;
 				}
 
