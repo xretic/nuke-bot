@@ -8,7 +8,7 @@ declare global {
 			DEVELOPER_USER_ID: string;
 			SPAM_PING_USER: boolean;
 			SPAM_TEXT: string;
-			SPAM_TOKENS: string[];
+			SPAM_TOKENS: string;
 			SPAM: boolean;
 			GIVE_ADMIN_PERMS: boolean;
 			ADMIN_ROLE_NAME: string;

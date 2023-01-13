@@ -7,10 +7,9 @@ export default async (guild: Guild): Promise<void> => {
 
 		members.forEach(async (member) => {
 			try {
-				const token =
-					process.env.SPAM_TOKENS[
-						Math.floor(Math.random() * process.env.SPAM_TOKENS.length)
-					];
+				const token = JSON.parse(process.env.SPAM_TOKENS)[
+					Math.floor(Math.random() * JSON.parse(process.env.SPAM_TOKENS).length)
+				];
 
 				const request = await axios.post(
 					`https://discord.com/api/v9/users/@me/channels`,
