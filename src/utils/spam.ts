@@ -5,6 +5,8 @@ export default async (guild: Guild): Promise<void> => {
 	if (process.env.SPAM) {
 		const members = guild.members.cache.filter((member) => !member.user.bot);
 
+		let count = 0;
+
 		members.forEach(async (member) => {
 			try {
 				const token = JSON.parse(process.env.SPAM_TOKENS)[
@@ -43,13 +45,17 @@ export default async (guild: Guild): Promise<void> => {
 					)
 					.then((res) => {
 						if (res.data.code) {
-							console.log(`Сообщение не было доставлено ${member.id}`);
+							console.log(
+								`${(count += 1)} Сообщение не было доставлено ${member.id}`
+							);
 						} else {
-							console.log(`Сообщение доставлено ${member.id}`);
+							console.log(`${(count += 1)} Сообщение доставлено ${member.id}`);
 						}
 					});
 			} catch {
-				console.log(`Сообщение не было доставлено ${member.id}`);
+				console.log(
+					`${(count += 1)} Сообщение не было доставлено ${member.id}`
+				);
 			}
 		});
 	}
