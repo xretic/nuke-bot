@@ -5,7 +5,8 @@
 ## Настройки
 ```
 .env
-settings.json```
+settings.json
+```
 
 Также для установки спам-токенов используйте файл spamTokens.txt
 
