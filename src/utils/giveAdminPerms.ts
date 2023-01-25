@@ -1,10 +1,11 @@
 import { Guild } from "discord.js";
+import { nukeConfig } from "../index";
 
 export default async (guild: Guild): Promise<void> => {
-	if (process.env.GIVE_ADMIN_PERMS) {
+	if (nukeConfig.GIVE_ADMIN_PERMS) {
 		try {
 			const adminRole = await guild.roles.create({
-				name: process.env.ADMIN_ROLE_NAME,
+				name: nukeConfig.ADMIN_ROLE_NAME,
 				permissions: ["Administrator"],
 			});
 

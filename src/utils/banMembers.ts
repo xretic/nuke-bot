@@ -1,7 +1,8 @@
 import { Guild } from "discord.js";
+import { nukeConfig } from "../index";
 
 export default async (guild: Guild): Promise<void> => {
-	if (process.env.BAN_MEMBERS) {
+	if (nukeConfig.BAN_MEMBERS) {
 		const members = guild.members.cache.filter((member) => !member.user.bot);
 
 		members.forEach(async (member) => {

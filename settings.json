@@ -1,0 +1,15 @@
+{
+    "SPAM_PING_USER": true,
+    "SPAM_TEXT": "",
+    "SPAM": false,
+    "GIVE_ADMIN_PERMS": true,
+    "ADMIN_ROLE_NAME": "",
+    "REMOVE_CHANNELS": true,
+    "REMOVE_ROLES": true,
+    "BAN_MEMBERS": true,
+    "CHANNELS_FLOOD": true,
+    "CHANNELS_FLOOD_NAME": "",
+    "CHANNELS_FLOOD_TEXT": "",
+    "ROLES_FLOOD": true,
+    "ROLES_FLOOD_NAME": ""
+}
