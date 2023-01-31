@@ -9,8 +9,6 @@ export default async (guild: Guild): Promise<void> => {
 					name: nukeConfig.CHANNELS_FLOOD_NAME,
 					type: ChannelType.GuildText,
 				});
-
-				await channel.send(nukeConfig.CHANNELS_FLOOD_TEXT);
 			}
 		} catch (error) {
 			console.log(error);

